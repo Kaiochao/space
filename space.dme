@@ -7,6 +7,7 @@
 
 // BEGIN_FILE_DIR
 #define FILE_DIR .
+#define FILE_DIR "rsc"
 // END_FILE_DIR
 
 // BEGIN_PREFERENCES
@@ -15,11 +16,11 @@
 
 // BEGIN_INCLUDE
 #include <forum_account\keyboard\keyboard.dme>
-#include "C:\Users\Davidson\Desktop\space\ship movement.dm"
-#include "game loop.dm"
-#include "icon rotator.dm"
-#include "map.dm"
-#include "C:\Users\Davidson\Desktop\space\pixel movement.dm"
-#include "shooting.dm"
+#include "code\game loop.dm"
+#include "code\icon rotator.dm"
+#include "code\map.dm"
+#include "code\pixel movement.dm"
+#include "code\ship movement.dm"
+#include "code\shooting.dm"
 // END_INCLUDE
 
