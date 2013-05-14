@@ -7,8 +7,8 @@ world
 var game/game = new
 game
 	proc/tick()
-		for(var/mob/m)
-			m.tick()
+		for(var/entity/e)
+			e.tick()
 
 	proc/loop()
 		spawn for()

@@ -1,25 +1,20 @@
-atom
-	icon = 'icons.dmi'
+world/view = 10
 
-world
-	turf = /turf/space
-	maxx = 100
-	maxy = 100
+atom icon = 'icons.dmi'
 
 turf
 	space
 		icon_state = "space"
-		New()
-			if(prob(10))
-				new /obj/star (src)
+		New() if(prob(30)) new /obj/star (src)
 
-obj
-	star
-		icon_state = "star"
-		New()
-			pixel_x = rand(31)
-			pixel_y = rand(31)
+	grass
+		icon_state = "grass"
+		density = 1
 
-mob
-	icon_state = "mob"
-	bounds = "9,1 to 24,24"
+	sky icon_state = "sky"
+
+obj/star
+	icon_state = "star"
+	New()
+		pixel_x = rand(31)
+		pixel_y = rand(31)

@@ -1,38 +1,34 @@
-//	default client movement input is not used
-client/Move()
+entity/ship
+	icon_state = "mob"
+	bounds = "9,1 to 24,24"
 
-mob
 	var	//	you can change these values
-		turn_rate	= 5		//	how fast the ship turns
-		max_speed	= 10	//	maximum speed in any direction
-		accel		= 0.5	//	how fast the ship speeds up
+		turn_rate	= 5.0	//	how fast the ship turns
+		max_speed	= 10.0	//	maximum speed in any direction
+		accel		= 0.2	//	how fast the ship speeds up
 		restitution	= 0.5	//	when the ship hits something, it bounces and this is multiplied to the bounced velocity component
 
 	var	tmp	//	no use changing these values
 		angle = 0			//	the current angle of the ship
-		vx = 0				//	the current horizontal velocity component
-		vy = 0				//	the current vertical velocity component
 
 		//	these are generated at runtime
 		icon/normal_icon	//	the rotated icon of the normal state
 		icon/thrust_icon	//	the rotated icon of the thrust state
 
-	//	this stuff happens every tick
-	proc/tick()
+	New()
+		..()
+		normal_icon = rotate_icon(icon, icon_state)
+		thrust_icon = rotate_icon(icon, icon_state + "-thrust")
+
+	tick()
 		accelerate()
 		decelerate()
 		do_velocity()
 
-	Login()
-		..()
-		set_loc(loc)
-		client.focus = src
-		normal_icon = rotate_icon(icon, icon_state)
-		thrust_icon = rotate_icon(icon, icon_state + "-thrust")
-
-	//	(boolean) is the player's k key currently down?
-	proc/has_key(k)
-		return client && istype(client.keys) && client.keys[k]
+	key_down(k)
+		if(k == "space")
+			player.set_focus(player.dude)
+		else ..()
 
 	//	bounce slightly when bumping something
 	bump(d)
@@ -79,7 +75,4 @@ mob
 	//	split movement into a bunch of small steps
 	proc/do_velocity()
 		if(vx || vy)
-			var steps = sqrt(vx * vx + vy * vy)
-			for(var/n in 1 to steps)
-				move(vx / steps, vy / steps)
-				if(!vx && !vy) return
+			move(vx, vy)

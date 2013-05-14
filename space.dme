@@ -16,10 +16,14 @@
 
 // BEGIN_INCLUDE
 #include <forum_account\keyboard\keyboard.dme>
+#include "map.dmm"
+#include "code\dude movement.dm"
+#include "code\entity.dm"
 #include "code\game loop.dm"
 #include "code\icon rotator.dm"
 #include "code\map.dm"
 #include "code\pixel movement.dm"
+#include "code\player.dm"
 #include "code\ship movement.dm"
 #include "code\shooting.dm"
 // END_INCLUDE
